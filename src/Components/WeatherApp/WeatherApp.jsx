@@ -12,7 +12,8 @@ import snow_icon from "../Assets/snow.png";
 import { useState } from "react";
 
 const WeatherApp = () => {
-  let api_key = "9ccce2f73efae307ce367de8894fbe4f";
+  const apiKey = process.env.REACT_APP_OPENWEATHERMAP_API_KEY;
+
   const [wicon, setWicon] = useState(cloud_icon);
 
   const search = async () => {
@@ -21,7 +22,7 @@ const WeatherApp = () => {
       return 0;
     }
     try {
-      let url = `https://api.openweathermap.org/data/2.5/weather?q=${element[0].value}&units=Metric&appid=${api_key}`;
+      let url = `https://api.openweathermap.org/data/2.5/weather?q=${element[0].value}&units=Metric&appid=${apiKey}`;
       let response = await fetch(url);
       let data = await response.json();
 
